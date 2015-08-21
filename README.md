@@ -62,7 +62,7 @@ Further, the column names that were extracted from the *features.txt* file were 
  6. "BodyBody" was replaced with "Body"
  7. All special characters in the variable names were removed
 
-The variable names before and after applying the changes are described in the CODEBOOK.md file.
+[CamelCase] (https://en.wikipedia.org/wiki/CamelCase) is used while creating these names. The variable names before and after applying the changes are described in the CODEBOOK.md file.
 
 Finally, this resulted in a tidy data set with 10,299 rows and 68 columns. 
 
