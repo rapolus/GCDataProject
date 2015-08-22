@@ -7,13 +7,13 @@ The downloaded data contains two folders - *test* and *train*. There are also fo
  1. A *readme.txt* file
  2. *activity_labels.txt* file which links the class labels with their activity names. There are 6 different activities in this data set.
  3. *features.txt* file which lists all the features in the data set. There are a total of 561 features for which data was collected.
- 4. *features_info.txt* file which has information about the variables selected for this data set.
+ 4. *features_info.txt* file which has a description of the features selected for this data set.
 
 The *test* folder has three files. They are:
 
  1. *subject_test.txt*: Each row in this file identifies the subject who performed the activity. There are 2,947 rows and 1 column in this file.
- 2. *Y_test.txt*: Each row in this file identifies the activity label performed by the subject. There are 2,947 rows and 1 column in this file.
- 3. *X_test.txt*: This file has the actual data for each subject and activity specified in the above two files across all the 561 features specified in the *features.txt* file. There are 2,947 rows and 561 columns in this file.
+ 2. *Y_test.txt*: Each row in this file identifies the label corresponding to the activity performed by the subject. There are 2,947 rows and 1 column in this file.
+ 3. *X_test.txt*: This file has the actual data corresponding to each subject and activity specified in the above two files across all the 561 features specified in the *features.txt* file. There are 2,947 rows and 561 columns in this file.
 
 The *train* folder has exactly similar files as the *test* folder. The description below is only about the dimensions of the files in this folder.
 
@@ -26,11 +26,11 @@ The data was collected for a total of 30 volunteers within the age bracket of 19
 
 #Creating the tidy data file#
 
-The *run_analysis.R* contains the code to create the tidy data file from the raw data described in the previous section.
+The *run_analysis.R* contains the code to create the tidy data file from the raw data described in the previous section. This section describes the work that was performed to clean up the data. 
 
 ##Merging the training and test data sets##
 
-The first step in creating the tidy data set was to merge the training and test data sets into one big data set. The subject and activity labels were added as new columns to the *X_train* and *X_test* data. The two files were then combined into one. The combined file has 10299 rows and 563 columns.
+The first step in creating the tidy data set was to merge the 'training' and 'test' data sets into one big data set. Before the datasets were merged, the corresponding subject and activity labels were added as new columns to the *X_train* and *X_test* data. The two files were then combined into one resulting in a new file with 10299 rows and 563 columns.
 
 The columns were then named appropriately:
 
@@ -42,15 +42,15 @@ One issue with the names in the *features.txt* file was that some of the names w
 
 ##Extracting the appropriate measurements##
 
-The second step was to extract only those variables that corresponded to the mean and standard deviation for each measurement. The *features_info.txt* has the list of the signals that were measured in the data set. A total of 33 different signals were measured. 
+The second step required for the course project was to extract only those variables that corresponded to the mean and standard deviation for each measurement. The *features_info.txt* has the list of signals that were measured in the data set. A total of 33 different signals were measured. 
 
-Further, various variables were estimated from these 33 signals. In this project, only those variables which had *mean()* and *std()* in their names were extracted in the final tidy data set. These were chosen because only these variables represented the simplest versions of mean and standard deviation (as requested in the course project).
+Further, various variables were estimated from these 33 signals. In this project, only those variables which had *mean()* and *std()* in their names were extracted in the final tidy data set. These were chosen because only these variables represent the simplest definitions of mean and standard deviation.
 
 This resulted in a total of 66 variables being extracted for the final tidy data set.
 
 ##Labeling columns and activities with descriptive names##
 
-To meet the requirements of a tidy data set, all activity labels were replaced with their actual descriptive names. This was done by using the *activity_labels.txt* file.
+To meet the requirements of a tidy data set, all activity labels were replaced with their actual descriptive names. This was done by using the activity names in the *activity_labels.txt* file.
 
 Further, the column names that were extracted from the *features.txt* file were appropriately labeled to meet the requirement of a tidy data set. The following changes were made to the names of the columns:
 
@@ -68,18 +68,18 @@ Finally, this resulted in a tidy data set with 10,299 rows and 68 columns.
 
 ##Creating an independent tidy data set##
 
-Using the data set created above, a second, independent tidy data set with the average of each variable for each activity and each subject was created. This was done using the *dplyr verbs* in R. Since there were 30 unique subject and 6 unique activities, this data set has 180 rows and 68 columns. The data is stored in a filed called *tidy_data.txt*
+Using the data set created above, a second, independent tidy data set with the average of each variable for each activity and each subject was created. This was done using the *dplyr verbs* in R. Since there were 30 unique subject and 6 unique activities, this data set has 180 rows and 68 columns. The data is stored in a file called *tidy_data.txt*
 
 
 #Running the script and viewing the tidy data#
 
-In order to run the script, make sure that your working directory is set to the 
+Follow the steps below to run the script and view the final tidy data set required by the course project: 
 
- 1. Set the working directory in R Studio to the 'UCI HAR Dataset' folder
- 2. Download the run_analysis.R script to this folder
- 3. Make sure that the *dplyr* package is installed
- 4. Run the script
- 5. A *tidy_data.txt* file containing the final tidy data set will be created in the folder
+ 1. Set the working directory in R Studio to the 'UCI HAR Dataset' folder. This directory should contain the *test* and *train* folders along with the four text files described in the "Description of the raw data" section.
+ 2. Download the run_analysis.R script to this folder.
+ 3. Make sure that the *dplyr* package is installed in R.
+ 4. Run the script.
+ 5. A *tidy_data.txt* file containing the final tidy data set will be created in the folder.
  6. The best way to view this file is by opening it in R studio. Use the following piece of code to view it. 
  
 > *data <- read.table("./tidy_data.txt", header = TRUE);*

@@ -1,9 +1,11 @@
 This file describes all the variables in the final tidy data set. Wherever possible, the original feature name from the *features.txt* file is used in the 'Description' column of the table below to provide a one-to-one link between the variable names in the tidy data set and the feature names in the original raw data. Please read the README.md file to know more about this file, the raw data and the data cleaning process.
 
+All "Acceleration" related variables are in standard gravity units 'g', whereas the units for all "Gyroscopic" related variables are radians/second.
+
 
 Variable | Description
 ------------ | -------------
-subjectID | Unique Id of the subject, varies from 1 to 10
+subjectID | Unique Id of the subject, varies from 1 to 30
 activity | Actual activity name - LAYING, SITTING, STANDING, WALKING, WALKING_DOWNSTAIRS, WALKING_UPSTAIRS
 tBodyAccelerationMeanX | tBodyAcc-mean()-X
 tBodyAccelerationMeanY | tBodyAcc-mean()-Y

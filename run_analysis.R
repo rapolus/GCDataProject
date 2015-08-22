@@ -1,8 +1,8 @@
 suppressMessages(library(dplyr))
 
-## Read the training and test datasets first
+## Read the training and test datasets
 
-# Read all the observiations from the training set
+# Read all the observations 
 # Read the corresponding activity labels 
 # Read the corresponding subjects
 # Create one table that combines the above three tables
@@ -54,7 +54,7 @@ filterdata$activity <- activitieschar[filterdata$activity]
 
 
 # Label the column names with appropriate desciptive variable names
-# Done using sub() and gsub() and a function that's called by sapply 
+# Done using sub() and gsub() within a function that's called by sapply 
 
 cname <- names(filterdata)
 replace <- function(x){
